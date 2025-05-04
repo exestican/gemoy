@@ -88,14 +88,35 @@
       100% { transform: scale(1); }
     }
 
-    a.whatsapp {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: white;
-      background-color: #25d366;
-      padding: 10px 20px;
+    button, .whatsapp {
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
       border-radius: 20px;
+      background-color: #ff80bf;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover, .whatsapp:hover {
+      background-color: #ff4d88;
+    }
+
+    input, textarea {
+      margin-top: 10px;
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .joke-box {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #cc0066;
     }
   </style>
 </head>
@@ -111,23 +132,47 @@
 
   <img src="IMG_20250410_122055.jpg" alt="Foto Kita" />
 
-  <div class="gif">
-    <img src="1995797_5d084.gif" alt="Gif 1" width="100%" />
-  </div>
-  <div class="gif">
-    <img src="1995808_e684a.gif" alt="Gif 2" width="100%" />
-  </div>
-  <div class="gif">
-    <img src="animasi-kucing-lucu-35.gif" alt="Gif 3" width="100%" />
-  </div>
-  <div class="gif">
-    <img src="16ec668d63ac6c1e8a1635b855cb1654.gif" alt="Gif 4" width="100%" />
+  <div class="gif"><img src="1995797_5d084.gif" alt="Gif 1" width="100%" /></div>
+  <div class="gif"><img src="1995808_e684a.gif" alt="Gif 2" width="100%" /></div>
+  <div class="gif"><img src="animasi-kucing-lucu-35.gif" alt="Gif 3" width="100%" /></div>
+  <div class="gif"><img src="16ec668d63ac6c1e8a1635b855cb1654.gif" alt="Gif 4" width="100%" /></div>
+
+  <div class="love">Aku nggak pernah butuh alasan buat sayang kamu. Kamu adalah alasannya. I love you forever ❤️</div>
+
+  <!-- Tombol Candaan -->
+  <button onclick="showJoke()">Klik untuk lihat candaan 😆</button>
+  <div class="joke-box" id="jokeBox"></div>
+
+  <!-- Ungkapan cinta -->
+  <div style="margin-top: 30px;">
+    <p>Tulis pesan cintamu untuk dikirim ke WhatsApp 💌</p>
+    <textarea id="loveMessage" rows="4" placeholder="Tulis sesuatu yang romantis di sini..."></textarea><br/>
+    <button onclick="sendToWhatsApp()">Kirim ke WhatsApp</button>
   </div>
 
-  <div class="love">
-    Aku nggak pernah butuh alasan buat sayang kamu. Kamu adalah alasannya. I love you forever ❤️
-  </div>
+  <script>
+    const jokes = [
+      "Kamu itu seperti charger, deket kamu bikin aku full terus!",
+      "Kamu kayak kopi deh, bikin deg-degan tapi bikin nagih.",
+      "Aku nggak suka matematika, tapi aku suka menghitung hari buat ketemu kamu.",
+      "Kalau kamu jadi sinyal, aku bakal nyari kamu terus walau lemah sinyal.",
+      "Kamu bikin aku lupa password, karena yang aku inget cuma kamu~"
+    ];
 
-  <a class="whatsapp" href="https://wa.me/?text=I%20love%20you%20sayang">Kirim ke WhatsApp 💌</a>
+    function showJoke() {
+      const joke = jokes[Math.floor(Math.random() * jokes.length)];
+      document.getElementById('jokeBox').innerText = joke;
+    }
+
+    function sendToWhatsApp() {
+      const message = document.getElementById('loveMessage').value.trim();
+      if (message === '') {
+        alert('Tulis dulu pesannya ya sayang 😘');
+        return;
+      }
+      const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+  </script>
 </body>
 </html>
