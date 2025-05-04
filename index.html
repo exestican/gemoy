@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untuk Kamu Sayang</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://i.pinimg.com/originals/f3/8e/37/f38e3756b0bb4eae94738bb44524fc7c.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #333;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #ff4d88;
+      font-size: 36px;
+    }
+    .reason-box {
+      margin: 20px auto;
+      font-size: 20px;
+      background: rgba(255, 240, 245, 0.9);
+      padding: 15px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      background-color: #ff80bf;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff4d88;
+    }
+    img {
+      margin-top: 20px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .gif {
+      margin: 20px auto;
+      max-width: 300px;
+      border-radius: 15px;
+    }
+    .love {
+      font-size: 30px;
+      color: #ff4d88;
+      margin: 20px;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    a.whatsapp {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #25d366;
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    a.whatsapp:hover {
+      background-color: #128c7e;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hai Sayang!</h1>
+  <p class="love">Aku <strong>cintaaa banget</strong> sama kamu!</p>
+
+  <div class="reason-box" id="message">Aku mencintaimu lebih dari aku mencintai WiFi gratis!</div>
+
+  <img src="IMG_20250410_122055.jpg" alt="Foto Kita" />
+
+  <div class="gif">
+    <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Kucing kartun berantem" width="100%">
+  </div>
+
+  <div class="gif">
+    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Kucing berantem lucu" width="100%">
+  </div>
+
+  <div>
+    <button onclick="sayGoodMorning()">Good Morning</button>
+    <button onclick="sayGoodNight()">Good Night</button>
+  </div>
+
+  <div>
+    <button onclick="showReason('karena kamu kayak charger di hidupku')">Kenapa aku mencintaimu?</button>
+    <button onclick="showReason('karena kamu satu-satunya notifikasi yang kutunggu')">Lagi?</button>
+    <button onclick="showReason('karena kamu lucunya overdosis, bikin jantung deg-deg')">Satu lagi?</button>
+  </div>
+
+  <a class="whatsapp" href="https://wa.me/?text=Hai%20Sayang%2C%20aku%20lagi%20lihat%20web%20romantis%20buat%20kamu%20%F0%9F%92%95%20Kamu%20mau%20lihat%20nggak%3F" target="_blank">Kirim ke Kamu di WhatsApp</a>
+
+  <p class="love">Love you always <span>&hearts;</span></p>
+
+  <script>
+    function sayGoodMorning() {
+      document.getElementById("message").innerText = "Selamat pagi, cintaku! Semoga harimu indah dan penuh senyum!";
+    }
+    function sayGoodNight() {
+      document.getElementById("message").innerText = "Selamat malam, sayang. Mimpi indah ya, jangan ganggu mimpiku karena di sana cuma ada kamu!";
+    }
+    function showReason(reason) {
+      document.getElementById("message").innerText = "Aku mencintaimu " + reason;
+    }
+  </script>
+</body>
+</html>
