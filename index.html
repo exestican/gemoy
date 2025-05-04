@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Untuk Kamu Sayang</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      color: #333;
+      text-align: center;
+      padding: 30px;
+      overflow: hidden;
+    }
+    h1 {
+      color: #ff4d88;
+      font-size: 36px;
+    }
+    .reason-box {
+      margin: 20px auto;
+      font-size: 20px;
+      background: rgba(255, 240, 245, 0.9);
+      padding: 15px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      background-color: #ff80bf;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff4d88;
+    }
+    img {
+      margin-top: 20px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .gif {
+      margin: 20px auto;
+      max-width: 300px;
+      border-radius: 15px;
+    }
+    .love {
+      font-size: 30px;
+      color: #ff4d88;
+      margin: 20px;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    a.whatsapp {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #25d366;
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    a.whatsapp:hover {
+      background-color: #128c7e;
+    }
+    .flower {
+      position: fixed;
+      top: -10px;
+      width: 20px;
+      height: 20px;
+      background: url('https://png.pngtree.com/png-vector/20230401/ourmid/pngtree-cute-pink-cherry-blossom-flower-png-image_6672125.png') no-repeat center;
+      background-size: contain;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body onload="showIntroAndPlay()">
+  
+    <div id="introText" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#fff0f5; color:#ff4d88; font-size:24px; display:flex; align-items:center; justify-content:center; text-align:center; padding:40px; z-index:999;">
+      <div>Ini lagu pertama kali yang membuat kita saling ngejek-ngejekin, sampai bikin aku jatuh cinta sama lagunya... apalagi sama kamu. Cinta poll!</div>
+    </div>
+    <audio id="loveSong" loop>
+
+    <source src="lagu.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <h1>Hai Sayang!</h1>
+  <p class="love">Aku <strong>cintaaa banget</strong> sama kamu!</p>
+
+  <div class="reason-box" id="message">Aku mencintaimu lebih dari aku mencintai WiFi gratis!</div>
+
+  <img src="IMG_20250410_122055.jpg" alt="Foto Kita" />
+
+  <div class="gif"><img src="1995797_5d084.gif" alt="Kucing 1" width="100%"></div>
+  <div class="gif"><img src="1995808_e684a.gif" alt="Kucing 2" width="100%"></div>
+  <div class="gif"><img src="animasi-kucing-lucu-35.gif" alt="Kucing 3" width="100%"></div>
+  <div class="gif"><img src="16ec668d63ac6c1e8a1635b855cb1654.gif" alt="Kucing 4" width="100%"></div>
+
+  <div>
+    <button onclick="sayGoodMorning()">Good Morning</button>
+    <button onclick="sayGoodNight()">Good Night</button>
+  </div>
+
+  <div>
+    <button onclick="showReason('karena kamu kayak charger di hidupku')">Kenapa aku mencintaimu?</button>
+    <button onclick="showReason('karena kamu satu-satunya notifikasi yang kutunggu')">Lagi?</button>
+    <button onclick="showReason('karena kamu lucunya overdosis, bikin jantung deg-deg')">Satu lagi?</button>
+  </div>
+
+  <p style="margin-top: 30px;">Jawab pertanyaan ini ya, sayang:</p>
+  <input type="text" id="answer" placeholder="Kenapa kamu sayang aku?"/>
+  <br>
+  <a id="whatsappLink" class="whatsapp" target="_blank">Kirim Jawaban Lewat WhatsApp</a>
+
+  <p class="love">Love you always <span>&hearts;</span></p>
+
+  <script>
+    function sayGoodMorning() {
+      document.getElementById("message").innerText = "Selamat pagi, cintaku! Semoga harimu indah dan penuh senyum!";
+    }
+    function sayGoodNight() {
+      document.getElementById("message").innerText = "Selamat malam, sayang. Mimpi indah ya, jangan ganggu mimpiku karena di sana cuma ada kamu!";
+    }
+    function showReason(reason) {
+      document.getElementById("message").innerText = "Aku mencintaimu " + reason;
+    }
+
+    const input = document.getElementById('answer');
+    const link = document.getElementById('whatsappLink');
+    input.addEventListener('input', function () {
+      const pesan = encodeURIComponent("Jawaban dari pertanyaan kenapa kamu sayang aku: " + input.value);
+      link.href = "https://wa.me/?text=" + pesan;
+    });
+
+    for (let i = 0; i < 30; i++) {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.animationDuration = 3 + Math.random() * 5 + 's';
+      flower.style.opacity = Math.random();
+      document.body.appendChild(flower);
+    }
+  </script>
+
+    <script>
+      function showIntroAndPlay() {
+        const intro = document.getElementById('introText');
+        const audio = document.getElementById('loveSong');
+        intro.style.display = 'flex';
+        setTimeout(() => {
+          intro.style.display = 'none';
+          audio.play();
+        }, 5000); // show for 5 seconds
+      }
+    </script>
+    </body>
+
+</html>
