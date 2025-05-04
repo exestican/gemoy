@@ -14,6 +14,7 @@
       color: #333;
       text-align: center;
       padding: 30px;
+      margin: 0;
       overflow-x: hidden;
     }
 
@@ -26,6 +27,23 @@
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: url('https://www.transparenttextures.com/patterns/star-sky.png') repeat;
+      opacity: 0.1;
+      animation: starsMove 50s linear infinite;
+    }
+
+    @keyframes starsMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
     }
 
     .bg-heart {
@@ -48,6 +66,7 @@
     h1 {
       color: #ff4d88;
       font-size: 36px;
+      margin-top: 0;
     }
 
     .reason-box {
@@ -61,18 +80,23 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    img {
-      margin-top: 20px;
-      width: 80%;
-      max-width: 400px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    .media-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px auto;
+      width: 90%;
+      max-width: 800px;
     }
 
-    .gif {
-      margin: 20px auto;
-      max-width: 300px;
+    .media-container .photo {
+      grid-column: span 2;
+    }
+
+    .media-container img {
+      width: 100%;
       border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .love {
@@ -117,24 +141,7 @@
       margin-top: 20px;
       font-size: 18px;
       color: #cc0066;
-    }
-
-    /* Bintang bergerak latar belakang */
-    .stars {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      background: url('https://www.transparenttextures.com/patterns/star-sky.png') repeat;
-      opacity: 0.1;
-      animation: starsMove 50s linear infinite;
-    }
-
-    @keyframes starsMove {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
+      min-height: 1.2em;
     }
   </style>
 </head>
@@ -146,36 +153,37 @@
   <audio src="lagu.mp3" autoplay loop></audio>
 
   <div class="reason-box">
-    Kamu adalah alasan aku tersenyum setiap hari.
+    Aku tahu kadang kamu merasa ragu, tapi izinkan aku membuatmu percaya bahwa cintaku nyata.
   </div>
 
-  <img src="IMG_20250410_122055.jpg" alt="Foto Kita" />
+  <div class="media-container">
+    <div class="photo"><img src="IMG_20250410_122055.jpg" alt="Foto Kita" /></div>
+    <div class="gif"><img src="1995797_5d084.gif" alt="Gif 1" /></div>
+    <div class="gif"><img src="1995808_e684a.gif" alt="Gif 2" /></div>
+    <div class="gif"><img src="animasi-kucing-lucu-35.gif" alt="Gif 3" /></div>
+    <div class="gif"><img src="16ec668d63ac6c1e8a1635b855cb1654.gif" alt="Gif 4" /></div>
+  </div>
 
-  <div class="gif"><img src="1995797_5d084.gif" alt="Gif 1" width="100%" /></div>
-  <div class="gif"><img src="1995808_e684a.gif" alt="Gif 2" width="100%" /></div>
-  <div class="gif"><img src="animasi-kucing-lucu-35.gif" alt="Gif 3" width="100%" /></div>
-  <div class="gif"><img src="16ec668d63ac6c1e8a1635b855cb1654.gif" alt="Gif 4" width="100%" /></div>
-
-  <div class="love">Aku nggak pernah butuh alasan buat sayang kamu. Kamu adalah alasannya. I love you forever ❤️</div>
+  <div class="love">Kamu adalah ceritaku yang paling indah. ❤️</div>
 
   <!-- Tombol Candaan -->
-  <button onclick="showJoke()">Klik untuk lihat candaan 😆</button>
+  <button onclick="showJoke()">Butuh Semangat? Klik di sini! 😘</button>
   <div class="joke-box" id="jokeBox"></div>
 
   <!-- Ungkapan cinta -->
   <div style="margin-top: 30px;">
     <p>Tulis pesan cintamu untuk dikirim ke WhatsApp 💌</p>
-    <textarea id="loveMessage" rows="4" placeholder="Tulis sesuatu yang romantis di sini..."></textarea><br/>
+    <textarea id="loveMessage" rows="4" placeholder="Tulis sesuatu yang membuat hati hangat..."></textarea><br/>
     <button onclick="sendToWhatsApp()">Kirim ke WhatsApp</button>
   </div>
 
   <script>
     const jokes = [
-      "Kamu itu seperti charger, deket kamu bikin aku full terus!",
-      "Kamu kayak kopi deh, bikin deg-degan tapi bikin nagih.",
-      "Aku nggak suka matematika, tapi aku suka menghitung hari buat ketemu kamu.",
-      "Kalau kamu jadi sinyal, aku bakal nyari kamu terus walau lemah sinyal.",
-      "Kamu bikin aku lupa password, karena yang aku inget cuma kamu~"
+      "Maaf ya kalau aku sering malu-malu, tapi hatiku seaneh-anehnya selalu cari kamu.",
+      "Kalau cinta itu film, kamu pasti jadi genre favoritku—selalu bikin baper, tapi selalu ingin nonton lagi.",
+      "Kamu tahu kenapa aku suka kamu? Karena di kamus, kata 'bahagia' selalu diikuti 'bersamamu'.",
+      "Aku sama kamu itu kayak kue dan krim, lengkap kalau bersama—kecuali tanpa kamu, rasanya hambar.",
+      "Jangan sedih sayang, di hatiku selalu ada ruang VIP khusus untuk kamu."
     ];
 
     function showJoke() {
