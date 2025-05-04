@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Untuk Kamu Sayang</title>
+  <title>Untuk Kamu Bayik Sayang</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
     body {
@@ -29,21 +29,21 @@
       to { opacity: 1; }
     }
 
-    .stars {
+    .stars, .sparkles {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: -3;
-      background: url('https://www.transparenttextures.com/patterns/star-sky.png') repeat;
-      opacity: 0.1;
-      animation: starsMove 50s linear infinite;
+      background: url('https://i.imgur.com/w1bX3Vn.png') repeat;
+      opacity: 0.06;
+      animation: starsMove 100s linear infinite;
     }
 
     @keyframes starsMove {
       0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
+      100% { background-position: 2000px 2000px; }
     }
 
     .bg-heart {
@@ -58,26 +58,32 @@
       opacity: 0.05;
     }
 
-    .sparkles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: url('https://i.imgur.com/oXr0K8g.png') repeat;
-      animation: sparklesMove 40s linear infinite;
-      opacity: 0.03;
-    }
-
     @keyframes floatHearts {
       from { background-position: 0 0; }
       to { background-position: 0 -1000px; }
     }
 
-    @keyframes sparklesMove {
-      0% { background-position: 0 0; }
-      100% { background-position: 500px 500px; }
+    .falling-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .falling-hearts::before {
+      content: '💖 💕 💓 💗';
+      position: absolute;
+      width: 100%;
+      animation: fall 10s linear infinite;
+      font-size: 20px;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100vh); }
     }
 
     h1 {
@@ -164,14 +170,17 @@
 </head>
 <body>
   <div class="stars"></div>
-  <div class="bg-heart"></div>
   <div class="sparkles"></div>
+  <div class="bg-heart"></div>
+  <div class="falling-hearts"></div>
 
-  <h1>Untuk Kamu Sayang ❤️</h1>
-  <audio src="lagu.mp3" autoplay loop controls style="margin-top: 10px;"></audio>
+  <h1>Untuk Kamu The Rel ❤️</h1>
+  <audio id="bgAudio" src="lagu.mp3" autoplay loop></audio>
 
   <div class="reason-box">
-    Aku tahu kadang kamu merasa ragu, tapi izinkan aku membuatmu percaya bahwa cintaku nyata dan tak pernah main-main.
+    Aku tahu kadang kamu merasa ragu, tapi izinkan aku membuatmu percaya bahwa cintaku nyata dan akan selalu ada.
+    <br><br>
+    Dan soal lagu itu... Aku kangen banget nyanyi bareng kamu lagi, kayak waktu dulu di kelas — saat kita ditinggal berduaan. Rasanya pengen banget ngulang momen itu, di mana cuma kita berdua yang nyanyi dengan deg-degan tapi bahagia. 💕
   </div>
 
   <div class="media-container">
@@ -182,27 +191,28 @@
     <div class="gif"><img src="16ec668d63ac6c1e8a1635b855cb1654.gif" alt="Gif 4" /></div>
   </div>
 
-  <div class="love">Kamu adalah ceritaku yang paling indah. Kamu nggak sadar betapa besar aku sayang kamu. ❤️</div>
+  <div class="love">Kamu adalah casisku yang paling indah, dan nyanyian di hatiku yang tidak pernah selesai. ❤️</div>
 
-  <!-- Tombol Candaan -->
-  <button onclick="showJoke()">Butuh Semangat? Klik di sini! 😘</button>
+  <button onclick="showJoke(); playEffect()">Kenapa Aku Mencintaimu? Klik di sini! 😘</button>
   <div class="joke-box" id="jokeBox"></div>
 
-  <!-- Ungkapan cinta -->
   <div style="margin-top: 30px;">
     <p>Tulis pesan cintamu untuk dikirim ke WhatsApp 💌</p>
     <textarea id="loveMessage" rows="4" placeholder="Tulis sesuatu yang membuat hati hangat..."></textarea><br/>
-    <button onclick="sendToWhatsApp()">Kirim ke WhatsApp</button>
+    <button onclick="sendToWhatsApp(); playEffect()">Kirim ke WhatsApp</button>
   </div>
+
+  <audio id="clickEffect" src="https://www.soundjay.com/buttons/sounds/button-29.mp3"></audio>
 
   <script>
     const jokes = [
+      "Aku mencintaimu karena kamu kayak charger di hidupku.",
       "Maaf ya kalau aku sering malu-malu, tapi hatiku seaneh-anehnya selalu cari kamu.",
       "Kalau cinta itu film, kamu pasti jadi genre favoritku—selalu bikin baper, tapi selalu ingin nonton lagi.",
       "Kamu tahu kenapa aku suka kamu? Karena di kamus, kata 'bahagia' selalu diikuti 'bersamamu'.",
       "Aku sama kamu itu kayak kue dan krim, lengkap kalau bersama—kecuali tanpa kamu, rasanya hambar.",
       "Jangan sedih sayang, di hatiku selalu ada ruang VIP khusus untuk kamu.",
-      "Kamu kayak Wi-Fi, deket kamu bikin sinyal hati full terus."
+      "Kalau aku jadi lagu, kamu pasti yang paling sering kuputar dan kuhafalin di hati."
     ];
 
     function showJoke() {
@@ -218,6 +228,13 @@
       }
       const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
+    }
+
+    function playEffect() {
+      const audio = document.getElementById('clickEffect');
+      if (audio) {
+        audio.play();
+      }
     }
   </script>
 </body>
