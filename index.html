@@ -118,9 +118,28 @@
       font-size: 18px;
       color: #cc0066;
     }
+
+    /* Bintang bergerak latar belakang */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: url('https://www.transparenttextures.com/patterns/star-sky.png') repeat;
+      opacity: 0.1;
+      animation: starsMove 50s linear infinite;
+    }
+
+    @keyframes starsMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
   </style>
 </head>
 <body>
+  <div class="stars"></div>
   <div class="bg-heart"></div>
 
   <h1>Untuk Kamu Sayang ❤️</h1>
