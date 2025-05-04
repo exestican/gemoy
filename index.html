@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Untuk Kamu Bayik</title>
+  <title>Untuk Kamu Sayang</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
     body {
@@ -35,7 +35,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -2;
+      z-index: -3;
       background: url('https://www.transparenttextures.com/patterns/star-sky.png') repeat;
       opacity: 0.1;
       animation: starsMove 50s linear infinite;
@@ -52,15 +52,32 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: -2;
       background: url('https://i.imgur.com/ZfF43yn.png') repeat;
       animation: floatHearts 20s linear infinite;
       opacity: 0.05;
     }
 
+    .sparkles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('https://i.imgur.com/oXr0K8g.png') repeat;
+      animation: sparklesMove 40s linear infinite;
+      opacity: 0.03;
+    }
+
     @keyframes floatHearts {
       from { background-position: 0 0; }
       to { background-position: 0 -1000px; }
+    }
+
+    @keyframes sparklesMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 500px 500px; }
     }
 
     h1 {
@@ -148,12 +165,13 @@
 <body>
   <div class="stars"></div>
   <div class="bg-heart"></div>
+  <div class="sparkles"></div>
 
   <h1>Untuk Kamu Sayang ❤️</h1>
-  <audio src="lagu.mp3" autoplay loop></audio>
+  <audio src="lagu.mp3" autoplay loop controls style="margin-top: 10px;"></audio>
 
   <div class="reason-box">
-    Aku tahu kadang kamu merasa ragu, tapi izinkan aku membuatmu percaya bahwa cintaku nyata.
+    Aku tahu kadang kamu merasa ragu, tapi izinkan aku membuatmu percaya bahwa cintaku nyata dan tak pernah main-main.
   </div>
 
   <div class="media-container">
@@ -164,7 +182,7 @@
     <div class="gif"><img src="16ec668d63ac6c1e8a1635b855cb1654.gif" alt="Gif 4" /></div>
   </div>
 
-  <div class="love">Kamu adalah ceritaku yang paling indah. ❤️</div>
+  <div class="love">Kamu adalah ceritaku yang paling indah. Kamu nggak sadar betapa besar aku sayang kamu. ❤️</div>
 
   <!-- Tombol Candaan -->
   <button onclick="showJoke()">Butuh Semangat? Klik di sini! 😘</button>
@@ -183,7 +201,8 @@
       "Kalau cinta itu film, kamu pasti jadi genre favoritku—selalu bikin baper, tapi selalu ingin nonton lagi.",
       "Kamu tahu kenapa aku suka kamu? Karena di kamus, kata 'bahagia' selalu diikuti 'bersamamu'.",
       "Aku sama kamu itu kayak kue dan krim, lengkap kalau bersama—kecuali tanpa kamu, rasanya hambar.",
-      "Jangan sedih sayang, di hatiku selalu ada ruang VIP khusus untuk kamu."
+      "Jangan sedih sayang, di hatiku selalu ada ruang VIP khusus untuk kamu.",
+      "Kamu kayak Wi-Fi, deket kamu bikin sinyal hati full terus."
     ];
 
     function showJoke() {
